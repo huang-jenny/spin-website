@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'ExcellentLLWeb-Bold';
+  src: url('./assets/fonts/ExcellentLLWeb-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NeueHaasGroteskDisplay-75Bold';
+  src: url('./assets/fonts/NeueHaasGroteskDisplay-75Bold-Web.woff2')
+    format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
