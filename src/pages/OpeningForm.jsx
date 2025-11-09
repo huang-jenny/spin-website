@@ -6,7 +6,7 @@ const OpeningForm = () => {
       <iframe
         src='https://tally.so/embed/rjyYOp?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
         width='100%'
-        className='max-w-[700px] mx-4 my-2'
+        className='max-w-[700px] md:px-4 py-2'
         height='100%'
         frameBorder='0'
         style={{
