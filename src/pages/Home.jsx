@@ -222,7 +222,7 @@ const Home = () => {
           )}
           {pageNumber === 2 && (
             <div
-              className={`lg:mt-0 flex flex-col lg:h-full`}
+              className={`lg:mt-0 flex flex-col lg:h-full  p-[4px] lg:p-[8px]`}
               style={{
                 marginTop:
                   window.innerWidth < breakpointLg ? `${logoHeight}px` : '0',
