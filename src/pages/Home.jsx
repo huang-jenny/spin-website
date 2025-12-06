@@ -102,7 +102,7 @@ const Home = () => {
 
         <div
           ref={mainRef}
-          className={`h-screen overflow-auto flex flex-col justify-between no-scrollbar`}
+          className={`h-svh overflow-auto flex flex-col justify-between no-scrollbar`}
         >
           <div
             className={`lg:mt-0 lg:justify-between flex flex-col lg:h-full p-[4px] lg:p-[8px]`}
@@ -172,7 +172,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className='flex h-screen lg:h-auto items-end'>
+            <div className='flex h-svh lg:h-auto items-end'>
               <button
                 onClick={() => setPageNumber(2)}
                 className='hover:text-hover-color'
@@ -187,9 +187,9 @@ const Home = () => {
 
         <div
           ref={imprintRef}
-          className={`h-screen overflow-auto flex flex-col justify-between no-scrollbar`}
+          className={`h-svh overflow-auto flex flex-col justify-between no-scrollbar`}
         >
-          {pageNumber === 0 && <div className='h-screen'></div>}
+          {pageNumber === 0 && <div className='h-svh'></div>}
           {pageNumber === 1 && (
             <div
               className={`lg:mt-0 flex flex-col lg:h-full p-[4px] lg:p-[8px]`}
