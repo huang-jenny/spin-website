@@ -314,7 +314,7 @@ const Home = () => {
         ref={logoRef}
         onLoad={handleImageLoad}
         alt='Spin Logo'
-        className='fixed lg:static left-0 top-0 pointer-events-none select-none object-contain w-full h-auto lg:w-auto lg:h-full mix-blend-difference  bg-white'
+        className='fixed lg:static left-0 top-0 pointer-events-none select-none object-contain w-full h-auto lg:w-auto lg:h-full mix-blend-difference  filter invert brightness-200'
       />
     </div>
   );
