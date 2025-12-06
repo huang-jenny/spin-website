@@ -46,10 +46,10 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-      return;
-    }
+    // if (isInitialMount.current) {
+    //   isInitialMount.current = false;
+    //   return;
+    // }
 
     const refs = {
       0: mainRef,
