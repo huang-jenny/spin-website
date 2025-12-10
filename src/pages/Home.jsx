@@ -299,14 +299,14 @@ const Home = () => {
         </div>
       </div>
       <div
-        className='w-full h-auto lg:w-auto lg:h-full fixed lg:static left-0 top-0'
+        className='w-full h-auto lg:w-auto lg:h-full fixed lg:static left-0 top-0 pointer-events-none'
         ref={logoRef}
       >
         <img
           src={spinlogo}
           onLoad={handleImageLoad}
           alt='Spin Logo'
-          className='object-contain w-full h-auto lg:w-auto lg:h-full pointer-events-none select-none'
+          className='object-contain w-full h-auto lg:w-auto lg:h-full select-none'
         />
         <HeaderMobile
           leftText={pageNumber === 0 ? headerTexts[headerTextIndex] : ''}
@@ -336,7 +336,7 @@ const Header = ({ leftText, rightText, handleRightTextClick }) => {
 
 const HeaderMobile = ({ leftText, rightText, handleRightTextClick }) => {
   return (
-    <div className='flex flex-row w-full mb-[18px] p-[4px] lg:p-[8px] lg:hidden'>
+    <div className='flex flex-row w-full mb-[18px] p-[4px] lg:p-[8px] lg:hidden pointer-events-auto'>
       <div className='flex-1'>{leftText}</div>
       <div className='flex-1'>
         <button
