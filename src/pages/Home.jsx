@@ -16,7 +16,7 @@ const Home = () => {
   const [logoHeight, setLogoHeight] = useState(400); // default fallback height
   const breakpointLg = 1024; // Tailwind's lg breakpoint in pixels
 
-  const isInitialMount = useRef(true);
+  // const isInitialMount = useRef(true);
 
   const mainRef = useRef(null);
   const imprintRef = useRef(null);
@@ -65,32 +65,19 @@ const Home = () => {
       2: imprintRef,
     };
 
-    refs[pageNumber]?.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
+    const element = refs[pageNumber]?.current;
+    if (element) {
+      element.scrollTop = 0; // Reset scroll position to top
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
 
-    // const element = refs[pageNumber]?.current;
-    // if (element) {
-    //   // Check if mobile (below lg breakpoint: 1024px)
-    //   const isMobile = window.innerWidth < 1024;
-
-    //   if (isMobile) {
-    //     const offset = -400;
-    //     const elementPosition = element.offsetTop;
-
-    //     window.scrollTo({
-    //       top: elementPosition + offset,
-    //       behavior: 'smooth',
-    //     });
-    //   } else {
-    //     // Desktop: use scrollIntoView
-    //     element.scrollIntoView({
-    //       behavior: 'smooth',
-    //       block: 'start',
-    //     });
-    //   }
-    // }
+    // refs[pageNumber]?.current?.scrollIntoView({
+    //   behavior: 'smooth',
+    //   block: 'start',
+    // });
   }, [pageNumber]);
 
   return (
