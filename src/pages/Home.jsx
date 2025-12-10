@@ -14,6 +14,7 @@ const Home = () => {
   ];
 
   const [logoHeight, setLogoHeight] = useState(400); // default fallback height
+  const [mobileHeaderHeight, setMobileHeaderHeight] = useState(0);
   const breakpointLg = 1024; // Tailwind's lg breakpoint in pixels
 
   // const isInitialMount = useRef(true);
@@ -21,6 +22,13 @@ const Home = () => {
   const mainRef = useRef(null);
   const imprintRef = useRef(null);
   const logoRef = useRef(null);
+  const mobileHeaderRef = useRef(null);
+
+  useEffect(() => {
+    if (mobileHeaderRef.current) {
+      setMobileHeaderHeight(mobileHeaderRef.current.offsetHeight);
+    }
+  }, [mobileHeaderRef.current?.offsetHeight]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -74,6 +82,24 @@ const Home = () => {
       });
     }
 
+    if (pageNumber === 0) {
+      const logoElement = logoRef.current;
+      if (logoElement) {
+        logoElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    } else {
+      const mobileHeaderElement = mobileHeaderRef.current;
+      if (mobileHeaderElement) {
+        mobileHeaderElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    }
+
     // refs[pageNumber]?.current?.scrollIntoView({
     //   behavior: 'smooth',
     //   block: 'start',
@@ -81,7 +107,10 @@ const Home = () => {
   }, [pageNumber]);
 
   return (
-    <div className='flex h-full font-main uppercase text-main-size tracking-main-tracking text-main-color leading-main'>
+    <div
+      className='flex h-full font-main uppercase text-main-size tracking-main-tracking text-main-color leading-main break-words'
+      lang='de'
+    >
       <div className='flex-1 overflow-hidden'>
         {/* <div
           className={`transition-transform duration-700 ${
@@ -103,7 +132,9 @@ const Home = () => {
             className={`lg:mt-0 lg:h-full`}
             style={{
               marginTop:
-                window.innerWidth < breakpointLg ? `${logoHeight}px` : '0',
+                window.innerWidth < breakpointLg && pageNumber === 0
+                  ? `${logoHeight}px`
+                  : '0',
             }}
           >
             <div className='p-[4px] lg:p-[8px] lg:justify-between flex flex-col min-h-full'>
@@ -184,6 +215,7 @@ const Home = () => {
         </div>
 
         <div className='h-[400px]'></div>
+        {/* hidden lg:block */}
         {/* Imprint Page */}
 
         <div
@@ -196,13 +228,19 @@ const Home = () => {
               className={`lg:mt-0 flex flex-col lg:h-full p-[4px] lg:p-[8px]`}
               style={{
                 marginTop:
-                  window.innerWidth < breakpointLg ? `${logoHeight}px` : '0',
+                  window.innerWidth < breakpointLg
+                    ? `${mobileHeaderHeight}px`
+                    : '0',
               }}
             >
               <Header
                 rightText={headerButtonRightTexts[1]}
                 handleRightTextClick={headerButtonRightLinks[1]}
               />
+              {/* <HeaderMobile
+                rightText={headerButtonRightTexts[1]}
+                handleRightTextClick={headerButtonRightLinks[1]}
+              /> */}
               <div className='flex flex-col gap-[3em]'>
                 <div className='flex flex-col gap-[2em]'>
                   <div>
@@ -226,13 +264,19 @@ const Home = () => {
               className={`lg:mt-0 flex flex-col lg:h-full  p-[4px] lg:p-[8px]`}
               style={{
                 marginTop:
-                  window.innerWidth < breakpointLg ? `${logoHeight}px` : '0',
+                  window.innerWidth < breakpointLg
+                    ? `${mobileHeaderHeight}px`
+                    : '0',
               }}
             >
               <Header
                 rightText={headerButtonRightTexts[2]}
                 handleRightTextClick={headerButtonRightLinks[2]}
               />
+              {/* <HeaderMobile
+                rightText={headerButtonRightTexts[2]}
+                handleRightTextClick={headerButtonRightLinks[2]}
+              /> */}
               <div className='mt-4 flex flex-col gap-[2em]'>
                 <section
                   aria-labelledby='company'
@@ -299,20 +343,24 @@ const Home = () => {
         </div>
       </div>
       <div
-        className='w-full h-auto lg:w-auto lg:h-full fixed lg:static left-0 top-0 pointer-events-none'
-        ref={logoRef}
+        className={`w-full lg:w-auto h-svh lg:h-svh left-0 top-0 overflow-hidden absolute lg:overflow-auto lg:static pointer-events-none`}
       >
-        <img
-          src={spinlogo}
-          onLoad={handleImageLoad}
-          alt='Spin Logo'
-          className='object-contain w-full h-auto lg:w-auto lg:h-full select-none'
-        />
-        <HeaderMobile
-          leftText={pageNumber === 0 ? headerTexts[headerTextIndex] : ''}
-          rightText={headerButtonRightTexts[pageNumber]}
-          handleRightTextClick={headerButtonRightLinks[pageNumber]}
-        />
+        <div ref={logoRef}>
+          <img
+            src={spinlogo}
+            onLoad={handleImageLoad}
+            alt='Spin Logo'
+            className={`object-contain w-full h-auto lg:w-auto lg:h-svh select-none`}
+          />
+          <div ref={mobileHeaderRef} className=''>
+            <HeaderMobile
+              leftText={pageNumber === 0 ? headerTexts[headerTextIndex] : ''}
+              rightText={headerButtonRightTexts[pageNumber]}
+              handleRightTextClick={headerButtonRightLinks[pageNumber]}
+            />
+          </div>
+        </div>
+        <div className='h-svh lg:h-0'></div>
       </div>
     </div>
   );
