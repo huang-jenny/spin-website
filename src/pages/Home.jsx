@@ -81,7 +81,7 @@ const Home = () => {
   }, [pageNumber]);
 
   return (
-    <div className='flex h-full font-main uppercase text-main-size tracking-main-tracking text-main-color leading-main'>
+    <div className='flex h-full font-main uppercase text-main-size tracking-main-tracking text-main-color leading-main break-words'>
       <div className='flex-1 overflow-hidden'>
         {/* <div
           className={`transition-transform duration-700 ${
