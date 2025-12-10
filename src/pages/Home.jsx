@@ -299,14 +299,14 @@ const Home = () => {
         </div>
       </div>
       <div
-        className='w-full h-auto lg:w-auto lg:h-full  fixed lg:static left-0 top-0'
+        className='w-full h-auto lg:w-auto lg:h-full fixed lg:static left-0 top-0'
         ref={logoRef}
       >
         <img
           src={spinlogo}
           onLoad={handleImageLoad}
           alt='Spin Logo'
-          className=' object-contain w-full h-auto lg:w-auto lg:h-full  pointer-events-none select-none'
+          className='object-contain w-full h-auto lg:w-auto lg:h-full select-none'
         />
         <HeaderMobile
           leftText={pageNumber === 0 ? headerTexts[headerTextIndex] : ''}
