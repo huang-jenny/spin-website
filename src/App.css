@@ -19,3 +19,12 @@ body,
     scrollbar-width: none;
   }
 }
+
+@layer base {
+  a {
+    @apply hover:text-hover-color;
+  }
+  button {
+    @apply hover:text-hover-color;
+  }
+}
