@@ -306,7 +306,7 @@ const Home = () => {
           src={spinlogo}
           onLoad={handleImageLoad}
           alt='Spin Logo'
-          className='object-contain w-full h-auto lg:w-auto lg:h-full select-none'
+          className='object-contain w-full h-auto lg:w-auto lg:h-full pointer-events-none select-none'
         />
         <HeaderMobile
           leftText={pageNumber === 0 ? headerTexts[headerTextIndex] : ''}
