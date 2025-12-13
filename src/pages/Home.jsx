@@ -14,6 +14,7 @@ const Home = () => {
   ];
 
   const [logoHeight, setLogoHeight] = useState(400); // default fallback height
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
   const breakpointLg = 1024; // Tailwind's lg breakpoint in pixels
 
   // const isInitialMount = useRef(true);
@@ -54,6 +55,15 @@ const Home = () => {
   };
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < breakpointLg);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [breakpointLg]);
+
+  useEffect(() => {
     // if (isInitialMount.current) {
     //   isInitialMount.current = false;
     //   return;
@@ -81,7 +91,7 @@ const Home = () => {
   }, [pageNumber]);
 
   return (
-    <div className='flex h-full font-main uppercase text-main-size tracking-main-tracking text-main-color leading-main break-words'>
+    <div className='flex h-svh lg:h-screen font-main uppercase text-main-size tracking-main-tracking text-main-color leading-main break-words'>
       <div className='flex-1 overflow-hidden'>
         {/* <div
           className={`transition-transform duration-700 ${
@@ -97,13 +107,12 @@ const Home = () => {
 
         <div
           ref={mainRef}
-          className={`h-svh overflow-auto flex flex-col justify-between no-scrollbar`}
+          className={`h-svh lg:h-screen overflow-auto flex flex-col justify-between no-scrollbar`}
         >
           <div
             className={`lg:mt-0 lg:h-full`}
             style={{
-              marginTop:
-                window.innerWidth < breakpointLg ? `${logoHeight}px` : '0',
+              marginTop: isMobile ? `${logoHeight}px` : '0',
             }}
           >
             <div className='p-[4px] lg:p-[8px] lg:justify-between flex flex-col min-h-full'>
@@ -171,7 +180,9 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className='flex h-svh lg:h-auto items-end'>
+              <div
+                className={`flex h-svh lg:h-auto items-end ${pageNumber === 0 ? `` : 'hidden'}`}
+              >
                 <button
                   onClick={() => setPageNumber(2)}
                   // className='hover:text-hover-color'
@@ -183,20 +194,19 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='h-[400px]'></div>
+        {/* <div className='h-[400px]'></div> */}
         {/* Imprint Page */}
 
         <div
           ref={imprintRef}
-          className={`h-svh overflow-auto flex flex-col justify-between no-scrollbar`}
+          className={`h-svh lg:h-screen overflow-auto flex flex-col justify-between no-scrollbar`}
         >
-          {pageNumber === 0 && <div className='h-svh'></div>}
+          {/* {pageNumber === 0 && <div className='h-svh lg:h-screen'></div>} */}
           {pageNumber === 1 && (
             <div
               className={`lg:mt-0 flex flex-col lg:h-full p-[4px] lg:p-[8px]`}
               style={{
-                marginTop:
-                  window.innerWidth < breakpointLg ? `${logoHeight}px` : '0',
+                marginTop: isMobile ? `${logoHeight}px` : '0',
               }}
             >
               <Header
@@ -210,7 +220,10 @@ const Home = () => {
                     encouraged. THE BAR is open Thu–SAT, 7PM until Goldener
                     Reiter Club – located right next door – opens.
                   </div>
-                  <div className='h-[10em]'>Reservierungstool</div>
+                  <div>For reservations, please contact us via email:</div>
+                  <div>
+                    <a href='mailto:hello@spin-bar.de'> hello@spin-bar.de </a>
+                  </div>
                   <div>
                     <p>Cancellations</p>
                     We kindly ask that you inform us as soon as possible if you
@@ -223,10 +236,9 @@ const Home = () => {
           )}
           {pageNumber === 2 && (
             <div
-              className={`lg:mt-0 flex flex-col lg:h-full  p-[4px] lg:p-[8px]`}
+              className={`lg:mt-0 flex flex-col lg:h-full p-[4px] lg:p-[8px]`}
               style={{
-                marginTop:
-                  window.innerWidth < breakpointLg ? `${logoHeight}px` : '0',
+                marginTop: isMobile ? `${logoHeight}px` : '0',
               }}
             >
               <Header
@@ -239,11 +251,10 @@ const Home = () => {
                   className='prose flex flex-col gap-[1em]'
                 >
                   <div>
+                    <p>SPIN</p>
                     <p>Läuft Stabil GmbH</p>
-                    <br />
-                    Theklastr. 1
-                    <br />
-                    80469 München
+                    <p>Theklastr. 1</p>
+                    <p>80469 München</p>
                   </div>
                   <div>
                     <p>Handelsregister:</p> HRB 211256
@@ -256,7 +267,7 @@ const Home = () => {
                   </div>
                   <div>
                     <p>Kontakt:</p>
-                    <a href='mailto:contact@spin-bar.de'>contact@spin-bar.de</a>
+                    <a href='mailto:hello@spin-bar.de'>hello@spin-bar.de</a>
                   </div>
                   <div>
                     <p>USt-Id-Nr:</p> DE295571897
@@ -272,7 +283,7 @@ const Home = () => {
                     <a href='https://custom-tip.com/'>CUSTOM TIP</a>
                   </div>
                 </section>
-
+                <div className='h-[6em]' />
                 <section aria-labelledby='dispute' className='prose max-w-none'>
                   <h2 id='dispute'>
                     Verbraucherstreitbeilegung / Universalschlichtungsstelle
@@ -283,15 +294,187 @@ const Home = () => {
                     Verbraucherschlichtungsstelle teilzunehmen.
                   </p>
                 </section>
-
+                <div className='h-[2em]' />
                 <section aria-labelledby='privacy' className='prose max-w-none'>
                   <h2 id='privacy'>Datenschutzerklärung</h2>
 
-                  <h3 className='mt-4'>1. Datenschutz auf einen Blick</h3>
-                  <div>
-                    <p>Allgemeine Hinweise</p>
+                  <p className='normal-case'>Stand: Dezember 2025</p>
+
+                  <h3 className='mt-4'>1. Verantwortlicher</h3>
+                  <p className='normal-case'>
+                    Verantwortlich für die Datenverarbeitung auf dieser Website
+                    ist:
+                  </p>
+                  <div className='normal-case'>
+                    <p>Läuft stabil GmbH</p>
+                    <p>Theklastraße 1</p>
+                    <p>80469 München</p>
                   </div>
-                  <div>...</div>
+                  <div className='normal-case'>
+                    <p>Handelsregister: HRB 211256</p>
+                    <p>Registergericht: Amtsgericht München</p>
+                    <p>Geschäftsführer: Felix Ruëff</p>
+                    <p>
+                      E-Mail:{' '}
+                      <a href='mailto:hello@spin-bar.de'>hello@spin-bar.de</a>
+                    </p>
+                  </div>
+
+                  <h3 className='mt-4'>
+                    2. Erhebung und Speicherung personenbezogener Daten beim
+                    Besuch der Website
+                  </h3>
+                  <p className='normal-case'>
+                    Beim Aufruf unserer Website werden durch den Server
+                    automatisch folgende Informationen erfasst:
+                  </p>
+                  <ul className='normal-case'>
+                    <li>- IP-Adresse</li>
+                    <li>- Datum und Uhrzeit des Zugriffs</li>
+                    <li>- Browsertyp und -version</li>
+                    <li>- verwendetes Betriebssystem</li>
+                    <li>- Referrer-URL</li>
+                    <li>- aufgerufene Seiten</li>
+                  </ul>
+                  <p className='normal-case'>
+                    Diese Daten sind technisch erforderlich, um die Website
+                    bereitzustellen und ihre Sicherheit zu gewährleisten.
+                  </p>
+                  <div className='normal-case'>
+                    <p>
+                      <strong>Zweck:</strong> Technischer Betrieb,
+                      Systemsicherheit, Fehleranalyse
+                    </p>
+                    <p>
+                      <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f
+                      DSGVO
+                    </p>
+                    <p>
+                      <strong>Speicherdauer:</strong> Server-Logfiles werden in
+                      der Regel nach 7–14 Tagen gelöscht.
+                    </p>
+                  </div>
+
+                  <h3 className='mt-4'>3. Hosting über Vercel</h3>
+                  <p className='normal-case'>
+                    Unsere Website wird gehostet durch:
+                  </p>
+                  <br />
+                  <div className='normal-case'>
+                    <p>Vercel Inc.</p>
+                    <p>340 S Lemon Ave #4133</p>
+                    <p>Walnut, CA 91789</p>
+                    <p>USA</p>
+                  </div>
+                  <br />
+                  <p className='normal-case'>
+                    Vercel verarbeitet personenbezogene Daten ausschließlich in
+                    unserem Auftrag. Es besteht ein Vertrag zur
+                    Auftragsverarbeitung gemäß Art. 28 DSGVO.
+                  </p>
+                  <p className='normal-case'>
+                    <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO
+                  </p>
+                  <p className='normal-case'>
+                    Datenschutzerklärung von Vercel:{' '}
+                    <a
+                      href='https://vercel.com/legal/privacy-policy'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      https://vercel.com/legal/privacy-policy
+                    </a>
+                  </p>
+
+                  <h3 className='mt-4'>4. Cookies</h3>
+                  <p className='normal-case'>
+                    Unsere Website verwendet ausschließlich Cookies, die für den
+                    technischen Betrieb erforderlich sind. Es werden keine
+                    Analyse-, Tracking- oder Marketing-Cookies eingesetzt.
+                  </p>
+                  <p className='normal-case'>
+                    <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO
+                  </p>
+
+                  <h3 className='mt-4'>
+                    5. Kontaktaufnahme und Reservierungen per E-Mail
+                  </h3>
+                  <p className='normal-case'>
+                    Wenn Sie uns per E-Mail kontaktieren oder eine
+                    Reservierungsanfrage stellen, verarbeiten wir die von Ihnen
+                    übermittelten personenbezogenen Daten, insbesondere:
+                  </p>
+                  <ul className='normal-case'>
+                    <li>- Name</li>
+                    <li>- E-Mail-Adresse</li>
+                    <li>- ggf. Telefonnummer</li>
+                    <li>- Inhalt der Nachricht bzw. Reservierungsanfrage</li>
+                  </ul>
+                  <div className='normal-case'>
+                    <p>
+                      <strong>Zweck:</strong> Bearbeitung von Anfragen und
+                      Reservierungen
+                    </p>
+                    <p>
+                      <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b
+                      DSGVO (vorvertragliche Maßnahmen)
+                    </p>
+                    <p>
+                      <strong>Speicherdauer:</strong> Die Daten werden gelöscht,
+                      sobald der Zweck der Verarbeitung entfällt und keine
+                      gesetzlichen Aufbewahrungspflichten bestehen.
+                    </p>
+                  </div>
+
+                  <h3 className='mt-4'>6. Externe Links (Social Media)</h3>
+                  <p className='normal-case'>
+                    Unsere Website enthält ausschließlich Verlinkungen zu
+                    externen Plattformen (z. B. Instagram). Beim Besuch unserer
+                    Website werden keine personenbezogenen Daten automatisch an
+                    diese Anbieter übertragen. Erst beim Anklicken eines
+                    externen Links gelten die Datenschutzbestimmungen des
+                    jeweiligen Anbieters.
+                  </p>
+
+                  <h3 className='mt-4'>7. Rechte der betroffenen Personen</h3>
+                  <p className='normal-case'>Sie haben das Recht auf:</p>
+                  <ul className='normal-case'>
+                    <li>- Auskunft (Art. 15 DSGVO)</li>
+                    <li>- Berichtigung (Art. 16 DSGVO)</li>
+                    <li>- Löschung (Art. 17 DSGVO)</li>
+                    <li>- Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+                    <li>- Datenübertragbarkeit (Art. 20 DSGVO)</li>
+                    <li>
+                      - Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)
+                    </li>
+                  </ul>
+                  <p className='normal-case'>
+                    Zur Ausübung Ihrer Rechte genügt eine formlose E-Mail an:{' '}
+                    <a href='mailto:hello@spin-bar.de'>hello@spin-bar.de</a>
+                  </p>
+
+                  <h3 className='mt-4'>8. Beschwerderecht</h3>
+                  <p className='normal-case'>
+                    Sie haben das Recht, sich bei einer
+                    Datenschutzaufsichtsbehörde zu beschweren. Zuständig ist:
+                  </p>
+                  <div>
+                    <p>
+                      Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)
+                    </p>
+                    <p>Promenade 27</p>
+                    <p>91522 Ansbach</p>
+                  </div>
+
+                  <h3 className='mt-4'>
+                    9. Aktualisierung dieser Datenschutzerklärung
+                  </h3>
+                  <p className='normal-case'>
+                    Wir behalten uns vor, diese Datenschutzerklärung anzupassen,
+                    sobald technische Änderungen (z. B. die Einführung eines
+                    Online-Reservierungstools) oder rechtliche Anforderungen
+                    dies erforderlich machen.
+                  </p>
                 </section>
               </div>
             </div>
