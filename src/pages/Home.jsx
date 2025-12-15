@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import spinlogo from '../assets/Ebene_1.png';
+import Lottie from 'lottie-react';
+import spinAnimation from "../assets/spinAnimation1.json"
 
 const Home = () => {
   const [pageNumber, setPageNumber] = useState(0);
@@ -89,6 +90,13 @@ const Home = () => {
     //   block: 'start',
     // });
   }, [pageNumber]);
+
+  const handleLottieLoad = (dotLottie) => {
+  if (logoRef.current) {
+    const height = logoRef.current.offsetHeight;
+    setLogoHeight(height);
+  }
+};
 
   return (
     <div className='flex h-svh lg:h-screen font-main uppercase text-main-size tracking-main-tracking text-main-color leading-main break-words'>
@@ -485,12 +493,21 @@ const Home = () => {
         className='w-full h-auto lg:w-auto lg:h-full fixed lg:static left-0 top-0 pointer-events-none'
         ref={logoRef}
       >
-        <img
+        {/* <img
           src={spinlogo}
           onLoad={handleImageLoad}
           alt='Spin Logo'
           className='object-contain w-full h-auto lg:w-auto lg:h-full select-none'
-        />
+        /> */}
+        <div className='w-full h-auto lg:w-auto lg:h-full select-none pr-[0px] lg:pr-[4px]'>
+          <Lottie 
+            animationData={spinAnimation}
+            loop={false}
+            autoplay={true}
+            style={{ width: '100%', height: '100%' }}
+            onDOMLoaded={handleLottieLoad}
+          />
+        </div>
         <HeaderMobile
           leftText={pageNumber === 0 ? headerTexts[headerTextIndex] : ''}
           rightText={headerButtonRightTexts[pageNumber]}
