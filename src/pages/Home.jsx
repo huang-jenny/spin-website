@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Lottie from 'lottie-react';
-import spinAnimation from "../assets/spinAnimation1.json"
+import spinAnimation from '../assets/spinAnimation1.json';
 
 const Home = () => {
   const [pageNumber, setPageNumber] = useState(0);
@@ -92,11 +92,11 @@ const Home = () => {
   }, [pageNumber]);
 
   const handleLottieLoad = (dotLottie) => {
-  if (logoRef.current) {
-    const height = logoRef.current.offsetHeight;
-    setLogoHeight(height);
-  }
-};
+    if (logoRef.current) {
+      const height = logoRef.current.offsetHeight;
+      setLogoHeight(height);
+    }
+  };
 
   return (
     <div className='flex h-svh lg:h-screen font-main uppercase text-main-size tracking-main-tracking text-main-color leading-main break-words'>
@@ -224,11 +224,19 @@ const Home = () => {
               <div className='flex flex-col gap-[3em]'>
                 <div className='flex flex-col gap-[2em]'>
                   <div>
-                    Walk-ins are welcome, but online reservations are
-                    encouraged. THE BAR is open Thu–SAT, 7PM until Goldener
-                    Reiter Club – located right next door – opens.
+                    We welcome you Thursday to Saturday from 7:00 PM. Until our
+                    reservation system is live, we operate on a first come,
+                    first served basis. We therefore recommend arriving early.
+                    From 7:00 PM to 9:00 PM, we focus on table seating and an
+                    intentional listening experience. From 9:00 PM onwards,
+                    walk-ins are welcome. Please note that it may get busier
+                    later in the evening.
                   </div>
-                  <div>For reservations, please contact us via email:</div>
+                  <div>
+                    If you would like to celebrate a birthday or are visiting
+                    with a group of more than six people, feel free to contact
+                    us via email:
+                  </div>
                   <div>
                     <a href='mailto:hello@spin-bar.de'> hello@spin-bar.de </a>
                   </div>
@@ -500,7 +508,7 @@ const Home = () => {
           className='object-contain w-full h-auto lg:w-auto lg:h-full select-none'
         /> */}
         <div className='w-full h-auto lg:w-auto lg:h-full select-none pr-[0px] lg:pr-[4px]'>
-          <Lottie 
+          <Lottie
             animationData={spinAnimation}
             loop={false}
             autoplay={true}
