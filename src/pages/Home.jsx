@@ -247,6 +247,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
+              <div className='h-svh lg:h-auto'/>
             </div>
           )}
           {pageNumber === 2 && (
@@ -518,8 +519,8 @@ const Home = () => {
                       </p>
                     </div>
                   </div>
+                  <div className='h-svh lg:h-auto'/>
                 </section>
-                <section className='h-[2em]'/>
               </div>
             </div>
           )}
