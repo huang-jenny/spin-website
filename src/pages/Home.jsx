@@ -1,8 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import Lottie from 'lottie-react';
-import spinAnimation from '../assets/spinAnimation1.json';
+import spinAnimation from '../assets/animation1.json';
+import spinAnimation2 from '../assets/animation2.json';
+import spinAnimation3 from '../assets/animation3.json';
+import spinAnimation4 from '../assets/animation4.json';
 
 const Home = () => {
+  const animations = [spinAnimation, spinAnimation2, spinAnimation3, spinAnimation4];
+  const [selectedAnimation] = useState(() => animations[Math.floor(Math.random() * animations.length)]);
   const [pageNumber, setPageNumber] = useState(0);
   const [headerTextIndex, setHeaderTextIndex] = useState(0);
   const headerTexts = ['THU—SAT, 7PM', 'THEKLASTR 1'];
@@ -21,7 +26,7 @@ const Home = () => {
   // const isInitialMount = useRef(true);
 
   const mainRef = useRef(null);
-  const imprintRef = useRef(null);
+  const subpageRef = useRef(null);
   const logoRef = useRef(null);
 
   useEffect(() => {
@@ -72,8 +77,8 @@ const Home = () => {
 
     const refs = {
       0: mainRef,
-      1: imprintRef,
-      2: imprintRef,
+      1: subpageRef,
+      2: subpageRef,
     };
 
     const element = refs[pageNumber]?.current;
@@ -100,22 +105,13 @@ const Home = () => {
 
   return (
     <div className='flex h-svh lg:h-screen font-main uppercase text-main-size tracking-main-tracking text-main-color leading-main break-words'>
-      <div className='flex-1 overflow-hidden'>
-        {/* <div
-          className={`transition-transform duration-700 ${
-            pageNumber === 0
-              ? 'translate-y-0'
-              : pageNumber === 2
-                ? '-translate-y-[200vh]'
-                : '-translate-y-[100vh]'
-          }`}
-        > */}
+      <div className='flex-1 overflow-y-hidden'>
 
         {/* Main Page */}
 
         <div
           ref={mainRef}
-          className={`h-svh lg:h-screen overflow-auto flex flex-col justify-between no-scrollbar`}
+          className={`h-svh lg:h-screen overflow-y-auto flex flex-col justify-between no-scrollbar`}
         >
           <div
             className={`lg:mt-0 lg:h-full`}
@@ -206,8 +202,8 @@ const Home = () => {
         {/* Imprint Page */}
 
         <div
-          ref={imprintRef}
-          className={`h-svh lg:h-screen overflow-auto flex flex-col justify-between no-scrollbar`}
+          ref={subpageRef}
+          className={`h-svh lg:h-screen overflow-y-auto flex flex-col justify-between no-scrollbar`}
         >
           {/* {pageNumber === 0 && <div className='h-svh lg:h-screen'></div>} */}
           {pageNumber === 1 && (
@@ -527,7 +523,7 @@ const Home = () => {
         </div>
       </div>
       <div
-        className='w-full h-auto lg:w-auto lg:h-full fixed lg:static left-0 top-0 pointer-events-none'
+        className='w-full h-auto lg:w-auto lg:h-svh fixed lg:static left-0 top-0 pointer-events-none'
         ref={logoRef}
       >
         {/* <img
@@ -536,12 +532,12 @@ const Home = () => {
           alt='Spin Logo'
           className='object-contain w-full h-auto lg:w-auto lg:h-full select-none'
         /> */}
-        <div className='w-full h-auto lg:w-auto lg:h-full select-none pr-[0px] lg:pr-[4px] pl-[3px] lg:pl-[0px]'>
+        <div className='w-full h-full aspect-[974/990] select-none pr-[0px] lg:pr-[4px] pl-[3px] lg:pl-[0px]'>
           <Lottie
-            animationData={spinAnimation}
+            animationData={selectedAnimation}
             loop={false}
             autoplay={true}
-            style={{ width: '100%', height: '100%' }}
+            // style={{ width: '100%', height: '100%' }}
             onDOMLoaded={handleLottieLoad}
           />
         </div>
