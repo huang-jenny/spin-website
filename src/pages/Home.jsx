@@ -105,13 +105,13 @@ const Home = () => {
 
   return (
     <div className='flex h-svh lg:h-screen font-main uppercase text-main-size tracking-main-tracking text-main-color leading-main break-words'>
-      <div className='flex-1 overflow-y-hidden'>
+      <div className='flex-1 overflow-y-hidden h-full'>
 
         {/* Main Page */}
 
         <div
           ref={mainRef}
-          className={`h-svh lg:h-screen overflow-y-auto flex flex-col justify-between no-scrollbar`}
+          className={`h-full overflow-y-auto flex flex-col justify-between no-scrollbar`}
         >
           <div
             className={`lg:mt-0 lg:h-full`}
@@ -203,7 +203,7 @@ const Home = () => {
 
         <div
           ref={subpageRef}
-          className={`h-svh lg:h-screen overflow-y-auto flex flex-col justify-between no-scrollbar`}
+          className={`h-full overflow-y-auto flex flex-col justify-between no-scrollbar`}
         >
           {/* {pageNumber === 0 && <div className='h-svh lg:h-screen'></div>} */}
           {pageNumber === 1 && (
