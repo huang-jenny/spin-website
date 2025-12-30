@@ -257,7 +257,7 @@ const Home = () => {
                 rightText={headerButtonRightTexts[2]}
                 handleRightTextClick={headerButtonRightLinks[2]}
               />
-              <div className='mt-4 flex flex-col gap-[2em]'>
+              <div className='flex flex-col gap-[2em]'>
                 <section
                   aria-labelledby='company'
                   className='prose flex flex-col gap-[1em]'
