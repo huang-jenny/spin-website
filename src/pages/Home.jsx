@@ -146,13 +146,11 @@ const Home = () => {
                         <div className='lg:hidden xl:block'>
                           <p>Mixer</p>
                           <p>Turntables</p>
-                          <p>Cartridge</p>
                         </div>
 
                         <div className='col-span-3'>
                           <p>Resør 3300</p>
                           <p>Technics 1210 MK7</p>
-                          <p>Taruya 05M-2</p>
                         </div>
 
                         <div className='col-span-4 h-[1em]'></div>
@@ -170,12 +168,12 @@ const Home = () => {
                           </div>
                           <div>
                             <p>ATL HD-306</p>
-                            <p>NAD 2140</p>
+                            <p>Rotel RA-920AX</p>
                             <p>Bar Area</p>
                           </div>
                           <div>
                             <p>Dynaudio MSP 80</p>
-                            <p>Rotel RA-920AX</p>
+                            <p>NAD 2140</p>
                             <p>Back Room</p>
                           </div>
                         </div>
