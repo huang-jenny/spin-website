@@ -232,8 +232,7 @@ const Home = () => {
                     later in the evening.
                   </div>
                   <div>
-                    If you would like to celebrate a birthday or are visiting
-                    with a group of more than six people, feel free to contact
+                    If you would like to celebrate a birthday, feel free to contact
                     us via email.
                   </div>
                   <div>
