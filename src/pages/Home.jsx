@@ -223,7 +223,7 @@ const Home = () => {
                     first served basis. We therefore recommend arriving early.
                   </div>
                   <div>
-                    From 7PM-9PM, we focus on table seating and an
+                    From 6PM-9PM, we focus on table seating and an
                     intentional listening experience.
                     
                     </div>
