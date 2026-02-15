@@ -10,7 +10,7 @@ const Home = () => {
   const [selectedAnimation] = useState(() => animations[Math.floor(Math.random() * animations.length)]);
   const [pageNumber, setPageNumber] = useState(0);
   const [headerTextIndex, setHeaderTextIndex] = useState(0);
-  const headerTexts = ['THU—SAT, 7PM', 'THEKLASTR 1'];
+  const headerTexts = ['WED—SAT, 6PM', 'THEKLASTR 1'];
 
   const headerButtonRightTexts = ['[RESERVATIONS]', '[CLOSE]', '[CLOSE]'];
   const headerButtonRightLinks = [
@@ -218,7 +218,7 @@ const Home = () => {
               <div className='flex flex-col gap-[3em]'>
                 <div className='flex flex-col gap-[1em]'>
                   <div>
-                    We welcome you Thursday to Saturday from 7PM. Until our
+                    We welcome you Wednesday to Saturday from 6PM. Until our
                     reservation system is live, we operate on a first come,
                     first served basis. We therefore recommend arriving early.
                   </div>
