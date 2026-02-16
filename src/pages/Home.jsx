@@ -227,11 +227,18 @@ const Home = () => {
                 <div className='flex flex-col gap-[1em]'>
                   <div>
                     Walk-ins are welcome, but online reservations are
-                    encouraged.The bar is open WED–SAT, 6PM until Goldener
+                    encouraged. The bar is open WED–SAT, 6PM until Goldener
                     Reiter Club – located right next door – opens.
                   </div>
-
                   <div>
+                    <button
+                      onClick={() => navigate('/reservation')}
+                      className='uppercase'
+                    >
+                      [Book a table]
+                    </button>
+                  </div>
+                  <div className='mt-[3em]'>
                     Cancellations
                     <br />
                     We kindly ask that you inform us as soon as possible if you
@@ -239,12 +246,6 @@ const Home = () => {
                     accommodate other guests who may be on our waiting
                     list.{' '}
                   </div>
-                  <button
-                    onClick={() => navigate('/reservation')}
-                    className='w-full bg-black text-background-color p-[0.5em] uppercase hover:bg-black hover:text-background-color'
-                  >
-                    Book a table
-                  </button>
                 </div>
               </div>
               <div className='h-svh lg:h-auto' />
