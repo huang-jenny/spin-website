@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import spinAnimation from '../assets/animation1.json';
 import spinAnimation2 from '../assets/animation2.json';
@@ -6,8 +7,16 @@ import spinAnimation3 from '../assets/animation3.json';
 import spinAnimation4 from '../assets/animation4.json';
 
 const Home = () => {
-  const animations = [spinAnimation, spinAnimation2, spinAnimation3, spinAnimation4];
-  const [selectedAnimation] = useState(() => animations[Math.floor(Math.random() * animations.length)]);
+  const navigate = useNavigate();
+  const animations = [
+    spinAnimation,
+    spinAnimation2,
+    spinAnimation3,
+    spinAnimation4,
+  ];
+  const [selectedAnimation] = useState(
+    () => animations[Math.floor(Math.random() * animations.length)]
+  );
   const [pageNumber, setPageNumber] = useState(0);
   const [headerTextIndex, setHeaderTextIndex] = useState(0);
   const headerTexts = ['THU—SAT, 7PM', 'THEKLASTR 1'];
@@ -106,7 +115,6 @@ const Home = () => {
   return (
     <div className='flex h-[100svh] font-main uppercase text-main-size tracking-main-tracking text-main-color leading-main break-words'>
       <div className='flex-1 overflow-y-hidden h-full'>
-
         {/* Main Page */}
 
         <div
@@ -218,30 +226,28 @@ const Home = () => {
               <div className='flex flex-col gap-[3em]'>
                 <div className='flex flex-col gap-[1em]'>
                   <div>
-                    We welcome you Thursday to Saturday from 7PM. Until our
-                    reservation system is live, we operate on a first come,
-                    first served basis. We therefore recommend arriving early.
+                    Walk-ins are welcome, but online reservations are
+                    encouraged.The bar is open WED–SAT, 6PM until Goldener
+                    Reiter Club – located right next door – opens.
                   </div>
+
                   <div>
-                    From 7PM-9PM, we focus on table seating and an
-                    intentional listening experience.
-                    
-                    </div>
-                    <div>From 9PM onwards,
-                    walk-ins are welcome. Please note that it may get busier
-                    later in the evening.
+                    Cancellations
+                    <br />
+                    We kindly ask that you inform us as soon as possible if you
+                    need to cancel your reservation. This will allow us to
+                    accommodate other guests who may be on our waiting
+                    list.{' '}
                   </div>
-                  <div>
-                    If you would like to celebrate a birthday or are visiting
-                    with a group of more than six people, feel free to contact
-                    us via email.
-                  </div>
-                  <div>
-                    <a href='mailto:hello@spin-bar.de'> [hello@spin-bar.de] </a>
-                  </div>
+                  <button
+                    onClick={() => navigate('/reservation')}
+                    className='w-full bg-black text-background-color p-[0.5em] uppercase hover:bg-black hover:text-background-color'
+                  >
+                    Book a table
+                  </button>
                 </div>
               </div>
-              <div className='h-svh lg:h-auto'/>
+              <div className='h-svh lg:h-auto' />
             </div>
           )}
           {pageNumber === 2 && (
@@ -304,29 +310,36 @@ const Home = () => {
                     Verbraucherschlichtungsstelle teilzunehmen.
                   </p>
                 </section>
-                <section aria-labelledby='privacy' className='prose max-w-none flex flex-col gap-[2em]'>
-                  <div><h2 id='privacy'>Datenschutzerklärung</h2>
-                  <p className='normal-case'>Stand: Dezember 2025</p></div>
+                <section
+                  aria-labelledby='privacy'
+                  className='prose max-w-none flex flex-col gap-[2em]'
+                >
+                  <div>
+                    <h2 id='privacy'>Datenschutzerklärung</h2>
+                    <p className='normal-case'>Stand: Dezember 2025</p>
+                  </div>
 
                   <div>
                     <h3 className='mt-0'>1. Verantwortlicher</h3>
                     <div className='flex flex-col gap-[1em]'>
                       <p className='normal-case'>
-                        Verantwortlich für die Datenverarbeitung auf dieser Website
-                        ist:
+                        Verantwortlich für die Datenverarbeitung auf dieser
+                        Website ist:
                       </p>
                       <div className='normal-case'>
-                      <p>Läuft stabil GmbH</p>
-                      <p>Theklastraße 1</p>
-                      <p>80469 München</p>
-                      <p>Handelsregister: HRB 211256</p>
-                      <p>Registergericht: Amtsgericht München</p>
-                      <p>Geschäftsführer: Felix Ruëff</p>
-                      <p>
-                        E-Mail:{' '}
-                        <a href='mailto:hello@spin-bar.de'>hello@spin-bar.de</a>
-                      </p>
-                    </div>
+                        <p>Läuft stabil GmbH</p>
+                        <p>Theklastraße 1</p>
+                        <p>80469 München</p>
+                        <p>Handelsregister: HRB 211256</p>
+                        <p>Registergericht: Amtsgericht München</p>
+                        <p>Geschäftsführer: Felix Ruëff</p>
+                        <p>
+                          E-Mail:{' '}
+                          <a href='mailto:hello@spin-bar.de'>
+                            hello@spin-bar.de
+                          </a>
+                        </p>
+                      </div>
                     </div>
                   </div>
 
@@ -337,36 +350,37 @@ const Home = () => {
                     </h3>
                     <div className='flex flex-col gap-[1em]'>
                       <p className='normal-case'>
-                      Beim Aufruf unserer Website werden durch den Server
-                      automatisch folgende Informationen erfasst:
-                    </p>
-                    <ul className='normal-case'>
-                      <li>- IP-Adresse</li>
-                      <li>- Datum und Uhrzeit des Zugriffs</li>
-                      <li>- Browsertyp und -version</li>
-                      <li>- verwendetes Betriebssystem</li>
-                      <li>- Referrer-URL</li>
-                      <li>- aufgerufene Seiten</li>
-                    </ul>
-                    
-                    <div className='normal-case'>
-                      <p className='normal-case'>
-                      Diese Daten sind technisch erforderlich, um die Website
-                      bereitzustellen und ihre Sicherheit zu gewährleisten.
-                    </p>
-                      <p>
-                        <strong>Zweck:</strong> Technischer Betrieb,
-                        Systemsicherheit, Fehleranalyse
+                        Beim Aufruf unserer Website werden durch den Server
+                        automatisch folgende Informationen erfasst:
                       </p>
-                      <p>
-                        <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f
-                        DSGVO
-                      </p>
-                      <p>
-                        <strong>Speicherdauer:</strong> Server-Logfiles werden in
-                        der Regel nach 7–14 Tagen gelöscht.
-                      </p>
-                    </div>
+                      <ul className='normal-case'>
+                        <li>- IP-Adresse</li>
+                        <li>- Datum und Uhrzeit des Zugriffs</li>
+                        <li>- Browsertyp und -version</li>
+                        <li>- verwendetes Betriebssystem</li>
+                        <li>- Referrer-URL</li>
+                        <li>- aufgerufene Seiten</li>
+                      </ul>
+
+                      <div className='normal-case'>
+                        <p className='normal-case'>
+                          Diese Daten sind technisch erforderlich, um die
+                          Website bereitzustellen und ihre Sicherheit zu
+                          gewährleisten.
+                        </p>
+                        <p>
+                          <strong>Zweck:</strong> Technischer Betrieb,
+                          Systemsicherheit, Fehleranalyse
+                        </p>
+                        <p>
+                          <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f
+                          DSGVO
+                        </p>
+                        <p>
+                          <strong>Speicherdauer:</strong> Server-Logfiles werden
+                          in der Regel nach 7–14 Tagen gelöscht.
+                        </p>
+                      </div>
                     </div>
                   </div>
 
@@ -374,30 +388,31 @@ const Home = () => {
                     <h3 className='mt-0'>3. Hosting über Vercel</h3>
                     <div className='flex flex-col gap-[1em]'>
                       <p className='normal-case'>
-                      Unsere Website wird gehostet durch:
-                    </p>
-                    <div className='normal-case'>
-                      <p>Vercel Inc.</p>
-                      <p>340 S Lemon Ave #4133</p>
-                      <p>Walnut, CA 91789</p>
-                      <p>USA</p>
-                    </div>
-                    <p className='normal-case'>
-                      Vercel verarbeitet personenbezogene Daten ausschließlich in
-                      unserem Auftrag. Es besteht ein Vertrag zur
-                      Auftragsverarbeitung gemäß Art. 28 DSGVO.
-                    <br/>
-                      <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO
-                    <br/>
-                      Datenschutzerklärung von Vercel:{' '}
-                      <a
-                        href='https://vercel.com/legal/privacy-policy'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                      >
-                        https://vercel.com/legal/privacy-policy
-                      </a>
-                    </p>
+                        Unsere Website wird gehostet durch:
+                      </p>
+                      <div className='normal-case'>
+                        <p>Vercel Inc.</p>
+                        <p>340 S Lemon Ave #4133</p>
+                        <p>Walnut, CA 91789</p>
+                        <p>USA</p>
+                      </div>
+                      <p className='normal-case'>
+                        Vercel verarbeitet personenbezogene Daten ausschließlich
+                        in unserem Auftrag. Es besteht ein Vertrag zur
+                        Auftragsverarbeitung gemäß Art. 28 DSGVO.
+                        <br />
+                        <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f
+                        DSGVO
+                        <br />
+                        Datenschutzerklärung von Vercel:{' '}
+                        <a
+                          href='https://vercel.com/legal/privacy-policy'
+                          target='_blank'
+                          rel='noopener noreferrer'
+                        >
+                          https://vercel.com/legal/privacy-policy
+                        </a>
+                      </p>
                     </div>
                   </div>
 
@@ -405,11 +420,13 @@ const Home = () => {
                     <h3 className='mt-0'>4. Cookies</h3>
                     <div className='flex flex-col gap-[1em]'>
                       <p className='normal-case'>
-                      Unsere Website verwendet ausschließlich Cookies, die für den
-                      technischen Betrieb erforderlich sind. Es werden keine
-                      Analyse-, Tracking- oder Marketing-Cookies eingesetzt.
-                    <br/>
-                        <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO
+                        Unsere Website verwendet ausschließlich Cookies, die für
+                        den technischen Betrieb erforderlich sind. Es werden
+                        keine Analyse-, Tracking- oder Marketing-Cookies
+                        eingesetzt.
+                        <br />
+                        <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f
+                        DSGVO
                       </p>
                     </div>
                   </div>
@@ -420,31 +437,35 @@ const Home = () => {
                     </h3>
                     <div className='flex flex-col gap-[1em]'>
                       <p className='normal-case'>
-                      Wenn Sie uns per E-Mail kontaktieren oder eine
-                      Reservierungsanfrage stellen, verarbeiten wir die von Ihnen
-                      übermittelten personenbezogenen Daten, insbesondere:
-                    </p>
-                    <ul className='normal-case'>
-                      <li>- Name</li>
-                      <li>- E-Mail-Adresse</li>
-                      <li>- ggf. Telefonnummer</li>
-                      <li>- Inhalt der Nachricht bzw. Reservierungsanfrage</li>
-                    </ul>
-                    <div className='normal-case'>
-                      <p>
-                        <strong>Zweck:</strong> Bearbeitung von Anfragen und
-                        Reservierungen
+                        Wenn Sie uns per E-Mail kontaktieren oder eine
+                        Reservierungsanfrage stellen, verarbeiten wir die von
+                        Ihnen übermittelten personenbezogenen Daten,
+                        insbesondere:
                       </p>
-                      <p>
-                        <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b
-                        DSGVO (vorvertragliche Maßnahmen)
-                      </p>
-                      <p>
-                        <strong>Speicherdauer:</strong> Die Daten werden gelöscht,
-                        sobald der Zweck der Verarbeitung entfällt und keine
-                        gesetzlichen Aufbewahrungspflichten bestehen.
-                      </p>
-                    </div>
+                      <ul className='normal-case'>
+                        <li>- Name</li>
+                        <li>- E-Mail-Adresse</li>
+                        <li>- ggf. Telefonnummer</li>
+                        <li>
+                          - Inhalt der Nachricht bzw. Reservierungsanfrage
+                        </li>
+                      </ul>
+                      <div className='normal-case'>
+                        <p>
+                          <strong>Zweck:</strong> Bearbeitung von Anfragen und
+                          Reservierungen
+                        </p>
+                        <p>
+                          <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b
+                          DSGVO (vorvertragliche Maßnahmen)
+                        </p>
+                        <p>
+                          <strong>Speicherdauer:</strong> Die Daten werden
+                          gelöscht, sobald der Zweck der Verarbeitung entfällt
+                          und keine gesetzlichen Aufbewahrungspflichten
+                          bestehen.
+                        </p>
+                      </div>
                     </div>
                   </div>
 
@@ -452,12 +473,12 @@ const Home = () => {
                     <h3 className='mt-0'>6. Externe Links (Social Media)</h3>
                     <div className='flex flex-col gap-[1em]'>
                       <p className='normal-case'>
-                      Unsere Website enthält ausschließlich Verlinkungen zu
-                      externen Plattformen (z. B. Instagram). Beim Besuch unserer
-                      Website werden keine personenbezogenen Daten automatisch an
-                      diese Anbieter übertragen. Erst beim Anklicken eines
-                      externen Links gelten die Datenschutzbestimmungen des
-                      jeweiligen Anbieters.
+                        Unsere Website enthält ausschließlich Verlinkungen zu
+                        externen Plattformen (z. B. Instagram). Beim Besuch
+                        unserer Website werden keine personenbezogenen Daten
+                        automatisch an diese Anbieter übertragen. Erst beim
+                        Anklicken eines externen Links gelten die
+                        Datenschutzbestimmungen des jeweiligen Anbieters.
                       </p>
                     </div>
                   </div>
@@ -466,19 +487,22 @@ const Home = () => {
                     <h3 className='mt-0'>7. Rechte der betroffenen Personen</h3>
                     <div className='flex flex-col gap-[1em]'>
                       <p className='normal-case'>Sie haben das Recht auf:</p>
-                    <ul className='normal-case'>
-                      <li>- Auskunft (Art. 15 DSGVO)</li>
-                      <li>- Berichtigung (Art. 16 DSGVO)</li>
-                      <li>- Löschung (Art. 17 DSGVO)</li>
-                      <li>- Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
-                      <li>- Datenübertragbarkeit (Art. 20 DSGVO)</li>
-                      <li>
-                        - Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)
-                      </li>
-                    </ul>
-                    <p className='normal-case'>
-                      Zur Ausübung Ihrer Rechte genügt eine formlose E-Mail an:{' '}
-                      <a href='mailto:hello@spin-bar.de'>hello@spin-bar.de</a>
+                      <ul className='normal-case'>
+                        <li>- Auskunft (Art. 15 DSGVO)</li>
+                        <li>- Berichtigung (Art. 16 DSGVO)</li>
+                        <li>- Löschung (Art. 17 DSGVO)</li>
+                        <li>
+                          - Einschränkung der Verarbeitung (Art. 18 DSGVO)
+                        </li>
+                        <li>- Datenübertragbarkeit (Art. 20 DSGVO)</li>
+                        <li>
+                          - Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)
+                        </li>
+                      </ul>
+                      <p className='normal-case'>
+                        Zur Ausübung Ihrer Rechte genügt eine formlose E-Mail
+                        an:{' '}
+                        <a href='mailto:hello@spin-bar.de'>hello@spin-bar.de</a>
                       </p>
                     </div>
                   </div>
@@ -487,16 +511,17 @@ const Home = () => {
                     <h3 className='mt-0'>8. Beschwerderecht</h3>
                     <div className='flex flex-col gap-[1em]'>
                       <p className='normal-case'>
-                      Sie haben das Recht, sich bei einer
-                      Datenschutzaufsichtsbehörde zu beschweren. Zuständig ist:
-                    </p>
-                    <div>
-                      <p>
-                        Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)
+                        Sie haben das Recht, sich bei einer
+                        Datenschutzaufsichtsbehörde zu beschweren. Zuständig
+                        ist:
                       </p>
-                      <p>Promenade 27</p>
-                      <p>91522 Ansbach</p>
-                    </div>
+                      <div>
+                        <p>
+                          Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)
+                        </p>
+                        <p>Promenade 27</p>
+                        <p>91522 Ansbach</p>
+                      </div>
                     </div>
                   </div>
 
@@ -506,14 +531,14 @@ const Home = () => {
                     </h3>
                     <div className='flex flex-col gap-[1em]'>
                       <p className='normal-case'>
-                      Wir behalten uns vor, diese Datenschutzerklärung anzupassen,
-                      sobald technische Änderungen (z. B. die Einführung eines
-                      Online-Reservierungstools) oder rechtliche Anforderungen
-                      dies erforderlich machen.
+                        Wir behalten uns vor, diese Datenschutzerklärung
+                        anzupassen, sobald technische Änderungen (z. B. die
+                        Einführung eines Online-Reservierungstools) oder
+                        rechtliche Anforderungen dies erforderlich machen.
                       </p>
                     </div>
                   </div>
-                  <div className='h-svh lg:h-auto'/>
+                  <div className='h-svh lg:h-auto' />
                 </section>
               </div>
             </div>
@@ -532,13 +557,14 @@ const Home = () => {
         /> */}
         <div className='w-full h-full select-none pr-[0px] lg:pr-[4px] pl-[3px] lg:pl-[0px]'>
           <div className='w-full h-full aspect-[974/990]'>
-          <Lottie
-            animationData={selectedAnimation}
-            loop={false}
-            autoplay={true}
-            // style={{ width: '100%', height: '100%' }}
-            onDOMLoaded={handleLottieLoad}
-          /></div>
+            <Lottie
+              animationData={selectedAnimation}
+              loop={false}
+              autoplay={true}
+              // style={{ width: '100%', height: '100%' }}
+              onDOMLoaded={handleLottieLoad}
+            />
+          </div>
         </div>
         <HeaderMobile
           leftText={pageNumber === 0 ? headerTexts[headerTextIndex] : ''}
