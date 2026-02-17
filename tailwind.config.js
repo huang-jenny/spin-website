@@ -16,6 +16,7 @@ export default {
       colors: {
         'main-color': '#000000',
         'hover-color': 'rgba(0, 0, 0, 0.5)',
+        'background-color': '#f5f5f5',
       },
       lineHeight: {
         main: '18px',
