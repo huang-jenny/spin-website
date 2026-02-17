@@ -226,9 +226,7 @@ const Home = () => {
               <div className='flex flex-col gap-[3em]'>
                 <div className='flex flex-col gap-[1em]'>
                   <div>
-                    Walk-ins are welcome, but online reservations are
-                    encouraged. The bar is open WED–SAT, 6PM until Goldener
-                    Reiter Club – located right next door – opens.
+                    WALK-INS ARE WELCOME, BUT ONLINE RESERVATIONS ARE ENCOURAGED. THE BAR IS OPEN WED–SAT, FROM 6PM.
                   </div>
                   <div>
                     <button
@@ -239,12 +237,17 @@ const Home = () => {
                     </button>
                   </div>
                   <div className='mt-[3em]'>
+                    Celebrations
+                    <br />
+                    IF YOU WOULD LIKE TO CELEBRATE YOUR BIRTHDAY OR ANY OTHER OCCASION WITH A LARGER GROUP, PLEASE SEND US AN EMAIL <a href='mailto:hello@spin-bar.de'>HELLO@SPIN-BAR.DE</a> AND WE WILL GET BACK TO YOU.
+                  </div>
+                  <div className=''>
                     Cancellations
                     <br />
                     We kindly ask that you inform us as soon as possible if you
                     need to cancel your reservation. This will allow us to
                     accommodate other guests who may be on our waiting
-                    list.{' '}
+                    list.
                   </div>
                 </div>
               </div>
