@@ -239,7 +239,7 @@ const Home = () => {
                   <div className='mt-[3em]'>
                     Celebrations
                     <br />
-                    IF YOU WOULD LIKE TO CELEBRATE YOUR BIRTHDAY OR ANY OTHER OCCASION WITH A LARGER GROUP, PLEASE SEND US AN EMAIL <a href='mailto:hello@spin-bar.de'>HELLO@SPIN-BAR.DE</a> AND WE WILL GET BACK TO YOU.
+                    IF YOU WOULD LIKE TO CELEBRATE YOUR BIRTHDAY OR ANY OTHER OCCASION WITH A LARGER GROUP, PLEASE SEND US AN <a href='mailto:hello@spin-bar.de'>[E-MAIL]</a> AND WE WILL GET BACK TO YOU.
                   </div>
                   <div className=''>
                     Cancellations
