@@ -244,10 +244,7 @@ const Home = () => {
                   <div className=''>
                     Cancellations
                     <br />
-                    We kindly ask that you inform us as soon as possible if you
-                    need to cancel your reservation. This will allow us to
-                    accommodate other guests who may be on our waiting
-                    list.
+                    WE KINDLY ASK YOU TO CANCEL YOUR RESERVATION AS EARLY AS POSSIBLE IF YOU ARE UNABLE TO ATTEND. THIS ALLOWS US TO OFFER THE TABLE TO OTHER GUESTS ON OUR WAITING LIST.
                   </div>
                 </div>
               </div>
