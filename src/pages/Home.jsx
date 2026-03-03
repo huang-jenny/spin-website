@@ -241,11 +241,6 @@ const Home = () => {
                     <br />
                     IF YOU WOULD LIKE TO CELEBRATE YOUR BIRTHDAY OR ANY OTHER OCCASION WITH A LARGER GROUP, PLEASE SEND US AN <a href='mailto:hello@spin-bar.de'>[E-MAIL]</a> AND WE WILL GET BACK TO YOU.
                   </div>
-                  <div className=''>
-                    Cancellations
-                    <br />
-                    WE KINDLY ASK YOU TO CANCEL YOUR RESERVATION AS EARLY AS POSSIBLE IF YOU ARE UNABLE TO ATTEND. THIS ALLOWS US TO OFFER THE TABLE TO OTHER GUESTS ON OUR WAITING LIST.
-                  </div>
                 </div>
               </div>
               <div className='h-svh lg:h-auto' />
