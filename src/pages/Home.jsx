@@ -226,7 +226,7 @@ const Home = () => {
               <div className='flex flex-col gap-[3em]'>
                 <div className='flex flex-col gap-[1em]'>
                   <div>
-                    WALK-INS ARE WELCOME, BUT ONLINE RESERVATIONS ARE ENCOURAGED. THE BAR IS OPEN WED–SAT, FROM 6PM.
+                    MOST OF OUR TABLES ARE FOR WALK-INS ONLY, BUT WE OFFER A SMALL NUMBER OF BOOKABLE TABLES FOR THOSE WHO PREFER TO PLAN AHEAD. PLEASE NOTE: RESERVATIONS ARE ONLY VALID ONCE CONFIRMED BY E-MAIL.
                   </div>
                   <div>
                     <button
