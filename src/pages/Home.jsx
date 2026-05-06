@@ -19,7 +19,7 @@ const Home = () => {
   );
   const [pageNumber, setPageNumber] = useState(0);
   const [headerTextIndex, setHeaderTextIndex] = useState(0);
-  const headerTexts = ['WED—SAT, 6PM', 'THEKLASTR 1'];
+  const headerTexts = ['WED—SAT, 7PM', 'THEKLASTR 1'];
 
   const headerButtonRightTexts = ['[RESERVATIONS]', '[CLOSE]', '[CLOSE]'];
   const headerButtonRightLinks = [
